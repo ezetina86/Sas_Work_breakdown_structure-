@@ -1,5 +1,6 @@
 # SAS Work breakdown structure 
 
+## Project timeline
 
 This Python script creates a Gantt chart using the Plotly library, which reflects a project schedule for developing a Robotic Process Automation (RPA) system. The project tasks, their duration, and the roles involved are defined in the script. 
 
@@ -10,6 +11,16 @@ The script provides a visual representation of the project timeline, which can b
 You can tweak this description as needed depending on the specifics of your script.
 
 ![Gantt Chart](newplot.png)
+
+## Project costs chart
+
+Accumulative Monthly Costs Bar Chart Script: This script generates a stacked bar chart to visually represent the cumulative monthly costs of various services used in a "Booking Management System". We start calculating the cost from July 2024 because the task, "Design a System That Meets Project’s Requirements", which incurs these costs, starts at this time. The stacked bars represent how different services contribute towards the monthly cost. The total cost for each month is indicated as a label above the bars.
+
+![Project cost](cumulative_costs.png)
+
+Cost per Service Pie Chart Script: This script produces a pie chart to illustrate how the total cost is spread across different services. Each slice of the pie represents a different service, and the size of each slice corresponds to the cost related to that service. An accompanying table is also generated to display the same data in a tabular form.
+
+![Service costs](service_cost.png)
 
 ## Installation
 

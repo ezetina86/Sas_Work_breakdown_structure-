@@ -75,5 +75,11 @@ fig.update_layout(
     title_font_color="black",
     title_font_size=30)
 
+# Show the Gantt chart with x-axis displaying time intervals per month.
+fig.update_xaxes(
+                tick0="2024-05-01",
+                dtick="M1",  # represents one month
+                )
+
 # Show the Gantt chart
 fig.show()
