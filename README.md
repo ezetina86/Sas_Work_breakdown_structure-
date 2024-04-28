@@ -9,6 +9,8 @@ The script provides a visual representation of the project timeline, which can b
 
 You can tweak this description as needed depending on the specifics of your script.
 
+![Gantt Chart](newplot.png)
+
 ## Installation
 
 Describe the installation process. This usually involves:
