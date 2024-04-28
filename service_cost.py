@@ -2,16 +2,28 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 
-# Monthly costs for each service
-costs = {
+# Monthly costs for each service in prod
+prod_costs = {
     'Firestore (Storage/Read/Write/Delete)': 574.17,
     'Pub/Sub': 24.06,
     'Big Query (Analysis+Storage)': 98.15,
-    'GKE Instances': 208.05,
+    'Compute Engine Instance (Core+Ram)': 208.05,
     'Dataflow Workers': 90.05
 }
 
-df = pd.DataFrame(list(costs.items()), columns=['Service', 'Cost'])
+# Calculate costs for dev and stg environments (development is 50% of prod, staging is 75% of prod)
+dev_costs = {service: 0.5 * cost for service, cost in prod_costs.items()}
+stg_costs = {service: 0.75 * cost for service, cost in prod_costs.items()}
+
+# Add to the dataframe
+df_prod = pd.DataFrame(list(prod_costs.items()), columns=['Service', 'Cost'])
+df_prod['Environment'] = 'prod'
+df_dev = pd.DataFrame(list(dev_costs.items()), columns=['Service', 'Cost'])
+df_dev['Environment'] = 'dev'
+df_stg = pd.DataFrame(list(stg_costs.items()), columns=['Service', 'Cost'])
+df_stg['Environment'] = 'stg'
+
+df = pd.concat([df_prod, df_dev, df_stg])
 
 # Create a pie chart
 fig = px.pie(df, values='Cost', names='Service', 
