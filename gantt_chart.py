@@ -8,6 +8,7 @@ colors_dict = {'Project Manager, Business Analyst': '#FA9A26',
                'Project Coordinator, Delivery Manager': '#0A213D',
                'Developers': '#1998DD',
                'Quality Assurance team': '#76CCBE',
+               'Technical Support team': '#76CCBE',
                'Project Manager': '#FA9A26'} 
 
 # Define the tasks 
