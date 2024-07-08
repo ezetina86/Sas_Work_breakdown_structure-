@@ -41,10 +41,22 @@ with Diagram("Container diagram for Product and Location Management System", dir
             description="Sends notifications to the users.",
         )
 
-        database = Database(
-            name="Database",
+        profile_db = Database(
+            name="Profile Database", 
+            technology="Cloud SQL", 
+            description="Stores profile information"
+        )
+
+        product_db = Database(
+            name="Product Database", 
+            technology="Cloud SQL", 
+            description="Stores product information"
+        )
+
+        location_db = Database(
+            name="Location Database",
             technology="Cloud SQL",
-            description="Stores Product and Location information",
+            description="Stores location information"
         )
 
         search = Container(
@@ -87,7 +99,9 @@ with Diagram("Container diagram for Product and Location Management System", dir
     customer >> Relationship("Views products and locations using") >> [spa]
     webapp >> Relationship("Delivers to the customer's web browser") >> spa
     spa >> Relationship("Make API calls to REST") >> api
-    api >> Relationship("Reads from and writes to") >> database
+    api >> Relationship("Reads from and writes to") >> profile_db
+    api >> Relationship("Reads from and writes to") >> product_db
+    api >> Relationship("Reads from and writes to") >> location_db
     api >> Relationship("Handles users authentication and role-based access control") >> auth
     api >> Relationship("Sends notifications to the users") >> notif
     api >> Relationship("Imports/exports data") >> data_import_export
@@ -96,6 +110,12 @@ with Diagram("Container diagram for Product and Location Management System", dir
     api >> Relationship("Makes API calls to [JSON/HTTPS]") >> erp
     api >> Relationship("Makes API calls to [JSON/HTTPS]") >> crm
     customer << Relationship("Sends notifications to the users") << notif
-    database << Relationship("Reads from") << search
-    database << Relationship("Reads/Writes from") << data_import_export
-    database << Relationship("Reads from") << recovery
+    profile_db << Relationship("Reads from") << search
+    profile_db << Relationship("Reads/Writes from") << data_import_export
+    profile_db << Relationship("Reads from") << recovery
+    product_db << Relationship("Reads from") << search
+    product_db << Relationship("Reads/Writes from") << data_import_export
+    product_db << Relationship("Reads from") << recovery
+    location_db << Relationship("Reads from") << search
+    location_db << Relationship("Reads/Writes from") << data_import_export
+    location_db << Relationship("Reads from") << recovery

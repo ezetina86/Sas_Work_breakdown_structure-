@@ -38,7 +38,10 @@ with Diagram("API Application Component Diagram", direction="TB", graph_attr=gra
     spa >> Relationship("Makes API calls") >> auth_controller
     spa >> Relationship("Receives notifications") << notif_controller
 
-    db = Database("Database", description="Stores and retrieves data")
-    profile_repository >> Relationship("Reads from and writes to") >> db
-    product_repository >> Relationship("Reads from and writes to") >> db
-    location_repository >> Relationship("Reads from and writes to") >> db
+    profile_db = Database("Profile Database", description="Stores and retrieves profile data")
+    product_db = Database("Product Database", description="Stores and retrieves product data")
+    location_db = Database("Location Database", description="Stores and retrieves location data")
+    
+    profile_repository >> Relationship("Reads from and writes to") >> profile_db
+    product_repository >> Relationship("Reads from and writes to") >> product_db
+    location_repository >> Relationship("Reads from and writes to") >> location_db
